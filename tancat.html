@@ -7,7 +7,7 @@
 <title>Test d'Oftalmologia 1P</title>
 <style>:root { --bg:#f3eefb; --surface:#fcfaff; --ink:#2a2140; --muted:#6d6387; --line:#e0d6f2; --head:#4a2f7e; --accent:#7e55b8; --ko:#b23b2e;
   --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif; --f-body:"Source Sans 3","Helvetica Neue",Arial,sans-serif; }
-@media (prefers-color-scheme: dark) { :root { --bg:#1a1524; --surface:#251e33; --ink:#eee7fb; --muted:#ab9fc6; --line:#3c3252; --head:#120d1b; --accent:#b896ea; --ko:#f08a7c; color-scheme: dark } }
+@media (prefers-color-scheme: dark) { :root { --bg:#1b1720; --surface:#26212d; --ink:#f0ebf5; --muted:#b0a6bd; --line:#3d3548; --head:#110e15; --accent:#c9a6ee; --ko:#f08a7c; color-scheme: dark } }
 * { box-sizing: border-box; }
 html, body { margin: 0; min-height: 100%; }
 body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.5;
@@ -33,6 +33,7 @@ button:disabled { opacity: .6; cursor: default; }
   <h1>Accés tancat</h1>
   <p>Aquest test es va poder fer servir fins al 5 de novembre de 2026. Ara ja no està disponible.</p>
 </main>
-<script>try { Object.keys(localStorage).filter(k => /-pw$/.test(k)).forEach(k => localStorage.removeItem(k)); } catch (e) {}</script>
+<script>try { Object.keys(localStorage).filter(k => /-pw$/.test(k)).forEach(k => localStorage.removeItem(k)); } catch (e) {}
+try { navigator.serviceWorker.getRegistrations().then(rs => rs.forEach(r => r.unregister())); caches.keys().then(ks => ks.forEach(k => caches.delete(k))); } catch (e) {}</script>
 </body>
 </html>
