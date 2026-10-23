@@ -1,5 +1,5 @@
 // web app: primer la xarxa (sempre la versió més nova) i, sense connexió, la còpia desada
-const C = "test-oftalmo-1p-7o_1iU3o";
+const C = "test-oftalmo-1p-glLy0JFc";
 self.addEventListener("install", e => { e.waitUntil(caches.open(C).then(c => c.addAll(["./", "manifest.webmanifest", "apple-touch-icon.png", "icon-192.png"]))); self.skipWaiting(); });
 self.addEventListener("activate", e => e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== C).map(k => caches.delete(k)))).then(() => self.clients.claim())));
 self.addEventListener("fetch", e => {
