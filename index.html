@@ -90,6 +90,16 @@ async function desxifra(pw) {
   const ds = new Response(new Blob([gz]).stream().pipeThrough(new DecompressionStream("gzip")));
   return await ds.text();
 }
+// comptador anònim: el primer cop que un dispositiu obre el test, envia només el nom del repositori a un Google Form
+function compta() {
+  const K = "test-oftalmo-1p-comptat";
+  if (llegeix(K)) return;
+  try {
+    const d = new URLSearchParams({ "entry.1608672960": "test-oftalmo-1p" });
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLSdEQvgU3gwEYiE9hQ6eA62rVEPR71MmpL9glnHfMg603hPwuQ/formResponse", { method: "POST", mode: "no-cors", body: d, keepalive: true })
+      .then(() => guarda(K, "1")).catch(() => {});
+  } catch (e) {}
+}
 function obre(html) { document.open(); document.write(html.replace("<head>", "<head>" + HEADTAGS)); document.close(); }
 async function intenta(pw, auto) {
   if (Date.now() >= TANCA) return tancat();
@@ -106,6 +116,7 @@ async function intenta(pw, auto) {
     return;
   }
   if (document.getElementById("rec").checked || auto) guarda(CLAU, pw);
+  compta();
   obre(html);
 }
 if (Date.now() >= TANCA) tancat();
